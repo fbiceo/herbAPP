@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { ProductService} from './services/product.service';
+import { RestaurantService} from './services/restaurant.service';
 import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [ProductService,RestaurantService]
 })
 export class MyApp {
   rootPage:any = TabsPage;
