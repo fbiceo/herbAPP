@@ -13,8 +13,10 @@ import { RestaurantPage } from '../pages/restaurant/restaurant';
 import { CartPage } from '../pages/cart/cart';
 import { ProductPage } from '../pages/product/product';
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ApiDataProvider } from '../providers/api-data/api-data';
 
 @NgModule({
   declarations: [
@@ -41,12 +43,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     RestaurantPage,
     CartPage,
-    ProductPage
+    ProductPage    
   ],
   providers: [  
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ApiDataProvider
   ]
 })
 export class AppModule {}

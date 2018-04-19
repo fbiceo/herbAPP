@@ -9,7 +9,10 @@ import { ProductService } from '../../app/services/product.service';
 export class ProductPage {
   category:String;
   items: any;
-  constructor(public navCtrl: NavController, private navParams: NavParams, private productService:ProductService) {
+  
+  constructor(public navCtrl: NavController, 
+              private navParams: NavParams, 
+              private productService:ProductService) {
     this.category = navParams.get('category');        
   }
 
@@ -20,6 +23,10 @@ export class ProductPage {
     
     this.productService.getPosts(category).subscribe(response =>{
         this.items = response;
+        localStorage.setItem('productList',JSON.stringify(this.items));
     });
+  }
+  goDetail(id:string){
+    this.navCtrl.push('ProductDetailPage',{id:id});
   }
 }
