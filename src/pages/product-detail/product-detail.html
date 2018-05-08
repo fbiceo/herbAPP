@@ -12,8 +12,57 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngFor="let image of productImages">
-      <img src="{{imageRoot+image}}" *ngIf="image != ''"/>
-  </div>
-  
+  <ion-slides class="image-slider" loop="true" slidesPerView="2" centeredSlides="false">
+    <ion-slide *ngFor="let image of productImages">
+      <img src="{{imageRoot+image}}" *ngIf="image != ''" #imageToView (click)="onClick(imageToView)"/>
+    </ion-slide>
+  </ion-slides>
+  <ion-card>
+    <ion-card-header>
+      <ion-icon name="arrow-dropright"></ion-icon> 產品成份
+    </ion-card-header>
+    <ion-card-content>
+      <div [innerHtml]="nl2br(productDetail.product02)"></div>      
+    </ion-card-content>    
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-icon name="arrow-dropright"></ion-icon> 產品規格
+    </ion-card-header>
+    <ion-card-content>
+      <div [innerHtml]="nl2br(productDetail.product03)"></div>      
+    </ion-card-content>    
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-icon name="arrow-dropright"></ion-icon> 營養標示
+    </ion-card-header>
+    <ion-card-content>
+      <div [innerHtml]="nl2br(productDetail.product04)"></div>      
+    </ion-card-content>    
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-icon name="arrow-dropright"></ion-icon> 使用方式
+    </ion-card-header>
+    <ion-card-content>
+      <div [innerHtml]="nl2br(productDetail.product05)"></div>      
+    </ion-card-content>    
+  </ion-card>  
+  <ion-card>
+    <ion-card-header>
+        <ion-icon name="arrow-dropright"></ion-icon> 注意禁忌
+    </ion-card-header>
+    <ion-card-content>
+      <div [innerHtml]="nl2br(productDetail.product06)"></div>
+    </ion-card-content>    
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+        <ion-icon name="arrow-dropright"></ion-icon> 保存期限
+    </ion-card-header>
+    <ion-card-content>
+      <div [innerHtml]="nl2br(productDetail.product07)"></div>      
+    </ion-card-content>    
+  </ion-card>  
 </ion-content>

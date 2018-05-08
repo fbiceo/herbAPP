@@ -13,7 +13,7 @@ import { RestaurantPage } from '../pages/restaurant/restaurant';
 import { CartPage } from '../pages/cart/cart';
 import { ProductPage } from '../pages/product/product';
 
-
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ApiDataProvider } from '../providers/api-data/api-data';
@@ -32,7 +32,8 @@ import { ApiDataProvider } from '../providers/api-data/api-data';
   imports: [
     HttpModule,
     BrowserModule,        
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

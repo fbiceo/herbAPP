@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProductService } from '../../app/services/product.service';
 import { MyApp } from '../../app/app.component';
+import { ImageViewerController } from "ionic-img-viewer";
+
 /**
  * Generated class for the ProductDetailPage page.
  *
@@ -22,7 +24,8 @@ export class ProductDetailPage {
   imageRoot : any = MyApp.rootURL+"/upload/";
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private productService:ProductService) {
+              private productService:ProductService,
+              public imageViewerCtrl: ImageViewerController) {
     this.id = navParams.get('id');
     this.productList = JSON.parse(localStorage.getItem('productList'));
     this.productList.forEach(element => {
@@ -35,9 +38,19 @@ export class ProductDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductDetailPage');
-
-      
+    console.log('ionViewDidLoad ProductDetailPage');   
   }
-
+  
+  nl2br(text: string) {
+    return text.replace(/(\r\n|\n\r|\r|\n)/gm, "<br/>");
+  }
+  /*
+  nl2br(text: string) {
+    return text.replace(/\\r\\n|\\r|\\n/gi, '<br/>');
+   //or ...'<br/>');
+  }*/ 
+  onClick(imageToView) {
+    const viewer = this.imageViewerCtrl.create(imageToView)
+    viewer.present();
+  }
 }

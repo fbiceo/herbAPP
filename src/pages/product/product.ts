@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController , NavParams } from 'ionic-angular';
 import { ProductService } from '../../app/services/product.service';
-
+import { MyApp } from '../../app/app.component';
 @Component({
   selector: 'page-product',
   templateUrl: 'product.html'
@@ -9,7 +9,7 @@ import { ProductService } from '../../app/services/product.service';
 export class ProductPage {
   category:String;
   items: any;
-  
+  imageRoot : any = MyApp.rootURL+"/upload/";
   constructor(public navCtrl: NavController, 
               private navParams: NavParams, 
               private productService:ProductService) {
@@ -28,5 +28,8 @@ export class ProductPage {
   }
   goDetail(id:string){
     this.navCtrl.push('ProductDetailPage',{id:id});
+  }
+  fetchImage(image:string){
+    return this.imageRoot+image.split(',')[0];
   }
 }
